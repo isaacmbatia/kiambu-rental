@@ -1,0 +1,24 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import ListingDetails from './ListingDetails';
+import ScrollToTop from './components/ScrollToTop';
+
+import Login from './components/admin/Login';
+import Dashboard from './components/admin/Dashboard';
+
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/listing/:id" element={<ListingDetails />} />
+        <Route path="/admin" element={<Login />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;

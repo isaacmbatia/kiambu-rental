@@ -1,25 +1,83 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+
+    // Close menu when route changes
+    useEffect(() => {
+        setIsOpen(false);
+        document.body.classList.remove('menu-open');
+    }, [location]);
+
+    // Toggle mobile menu
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+        if (!isOpen) {
+            document.body.classList.add('menu-open');
+        } else {
+            document.body.classList.remove('menu-open');
+        }
+    };
+
+    // Close menu when clicking a link
+    const closeMenu = () => {
+        setIsOpen(false);
+        document.body.classList.remove('menu-open');
+    };
 
     return (
-        <nav className="navbar" style={{ borderBottom: '1px solid #e5e7eb', backgroundColor: 'white', position: 'sticky', top: 0, zIndex: 1000 }}>
-            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '90px' }}>
-                <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <img src="/logo.png" alt="Kiambu Rental" style={{ height: '150px' }} />
+        <nav className="navbar">
+            <div className="container navbar-container">
+                <a href="/" className="navbar-logo">
+                    <img src="/logo.png" alt="Kiambu Rental - Verified Houses in Kiambu County" />
                 </a>
 
                 {/* Desktop Menu */}
-                <div className="desktop-menu" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-                    <a href="#listings" style={{ fontWeight: 500 }}>Vacant Houses</a>
-                    <a href="#how-it-works" style={{ fontWeight: 500 }}>How It Works</a>
-                    <a href="#contact" style={{ fontWeight: 500 }}>Contact</a>
+                <div className="desktop-menu">
+                    <a href="/#listings">Vacant Houses</a>
+                    <a href="/#how-it-works">How It Works</a>
+                    <Link to="/about">About Us</Link>
+                    <a href="/#contact">Contact</a>
                     <a
                         href="https://wa.me/254735047202?text=I%20want%20to%20list%20my%20house"
                         className="btn btn-primary"
                         target="_blank"
                         rel="noreferrer"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.5rem' }}>
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        List Your House
+                    </a>
+                </div>
+
+                {/* Mobile Menu Button */}
+                <button
+                    className={`mobile-menu-btn ${isOpen ? 'open' : ''}`}
+                    onClick={toggleMenu}
+                    aria-label="Toggle menu"
+                    aria-expanded={isOpen}
+                >
+                    <span className="hamburger-line"></span>
+                    <span className="hamburger-line"></span>
+                    <span className="hamburger-line"></span>
+                </button>
+
+                {/* Mobile Menu */}
+                <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
+                    <a href="/#listings" onClick={closeMenu}>Vacant Houses</a>
+                    <a href="/#how-it-works" onClick={closeMenu}>How It Works</a>
+                    <Link to="/about" onClick={closeMenu}>About Us</Link>
+                    <a href="/#contact" onClick={closeMenu}>Contact</a>
+                    <a
+                        href="https://wa.me/254735047202?text=I%20want%20to%20list%20my%20house"
+                        className="btn btn-primary"
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={closeMenu}
+                        style={{ marginTop: '1rem' }}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.5rem' }}>
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>

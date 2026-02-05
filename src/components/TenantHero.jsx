@@ -2,7 +2,7 @@ import React from 'react';
 
 const TenantHero = () => {
     return (
-        <div className="relative" style={{ height: '500px', width: '100%', position: 'relative' }}>
+        <div className="hero-section" style={{ width: '100%', position: 'relative' }}>
             {/* Background Image with Overlay */}
             <div
                 style={{
@@ -30,31 +30,26 @@ const TenantHero = () => {
                     alignItems: 'center',
                     textAlign: 'center',
                     color: 'white',
-                    zIndex: 10
+                    zIndex: 10,
+                    padding: '2rem 1rem'
                 }}
             >
-                <h1 style={{
-                    fontSize: '3.5rem',
-                    fontWeight: 800,
-                    marginBottom: '1rem',
-                    textShadow: '0 2px 4px rgba(0,0,0,0.5)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px',
-                    lineHeight: '1.2'
-                }}>
+                <h1 className="hero-title">
                     Vacant Houses in Kiambu
                 </h1>
-                <p style={{
-                    fontSize: '1.5rem',
-                    fontWeight: 500,
-                    textShadow: '0 1px 2px rgba(0,0,0,0.5)',
-                    maxWidth: '800px'
-                }}>
+                <p className="hero-subtitle">
                     Find Verified Vacant Houses Near You
                 </p>
 
-                <div style={{ marginTop: '2.5rem' }}>
-                    <a href="#listings" className="btn btn-primary" style={{ fontSize: '1.1rem', padding: '1rem 2.5rem' }}>
+                <div style={{ marginTop: '2rem' }}>
+                    <a
+                        href="#listings"
+                        className="btn btn-primary"
+                        style={{
+                            fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)',
+                            padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem)'
+                        }}
+                    >
                         Find Your Home
                     </a>
                 </div>

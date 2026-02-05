@@ -1,42 +1,112 @@
-# Kiambu Rental Website
+# Kiambu Rental
 
-This is a modern, responsive rental website built with React and Vite.
+A modern, responsive web application for finding verified vacant rental houses in Kiambu County, Kenya.
 
-## Features
-- **Admin Managed**: You can easily add/remove houses by editing a single file.
-- **WhatsApp Integration**: Direct WhatsApp links for landlords to list and tenants to inquire.
-- **Responsive Design**: Looks great on mobile and desktop.
-- **Premium Aesthetics**: Professional green and white theme.
+## 🏠 Features
 
-## How to Run
+- **Property Listings**: Browse bedsitters, singles, 1-3 bedroom apartments, shops, and AirBnbs
+- **Location-Based Search**: Find properties in Ruaka, Ruiru, Kikuyu, Limuru, and Kiambu Town
+- **Direct Contact**: Connect with landlords directly via WhatsApp
+- **Responsive Design**: Optimized for mobile, tablet, and desktop devices
+- **SEO Optimized**: Enhanced meta tags for better search engine visibility
 
-1. Open a terminal in this folder.
-2. Run `npm install` (if not already done).
-3. Run `npm run dev`.
-4. Open `http://localhost:5173` in your browser.
+## 🚀 Live Demo
 
-## How to Add/Edit Houses
+Visit the live site: [https://isaacmbatia.github.io/kiambu-rental/](https://isaacmbatia.github.io/kiambu-rental/)
 
-All house listings are stored in `src/data/houses.js`.
+## 💻 Tech Stack
 
-To add a new house:
-1. Open `src/data/houses.js`.
-2. Add a new object to the `houses` array following this format:
-   ```javascript
-   {
-     id: 6, // Unique number
-     title: "House Title",
-     location: "Location Name",
-     price: 15000,
-     type: "Apartment", // or Bedsitter, Shop, etc.
-     imageUrl: "https://link-to-image.com/image.jpg",
-     isNew: true, // or false
-     verified: true
-   }
-   ```
-3. Save the file. The website will update immediately.
+- **Frontend**: React + Vite
+- **Styling**: CSS with modern design principles
+- **Deployment**: GitHub Pages with automated CI/CD
+- **Backend**: Node.js/Express (for API endpoints)
 
-## Customization
+## 🛠️ Local Development
 
-- **Colors & Fonts**: Edit `src/index.css`.
-- **Contact Number**: Currently set to `0735047202`. To change, search and replace in the `src/components` folder.
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/isaacmbatia/kiambu-rental.git
+cd kiambu-rental
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+4. Start the backend server (in a separate terminal):
+```bash
+node server/index.js
+```
+
+The application will be available at `http://localhost:5173`
+
+## 📦 Build
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+The built files will be in the `dist` directory.
+
+## 🚀 Deployment
+
+This project is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
+
+### Manual Deployment
+
+To deploy manually:
+
+```bash
+npm run build
+npm run preview
+```
+
+## 📱 Responsive Design
+
+The application is fully responsive and optimized for:
+- 📱 Mobile devices (320px and up)
+- 📱 Tablets (768px and up)
+- 💻 Desktops (1024px and up)
+- 🖥️ Large screens (1440px and up)
+
+## 🔧 Configuration
+
+### Vite Config
+
+The base path is configured for GitHub Pages deployment in `vite.config.js`:
+
+```javascript
+base: '/kiambu-rental/'
+```
+
+## 📄 License
+
+This project is private and proprietary.
+
+## 👤 Author
+
+**Isaac Mbatia**
+- GitHub: [@isaacmbatia](https://github.com/isaacmbatia)
+
+## 🤝 Contributing
+
+This is a private project. For any inquiries, please contact the repository owner.
+
+---
+
+Made with ❤️ for Kiambu County residents

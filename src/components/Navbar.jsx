@@ -37,9 +37,9 @@ const Navbar = () => {
                 {/* Desktop Menu */}
                 <div className="desktop-menu">
                     <Link to="/#listings">Vacant Houses</Link>
-                    <Link to="/#how-it-works">How It Works</Link>
+                    <Link to="/how-it-works">How It Works</Link>
                     <Link to="/about">About Us</Link>
-                    <Link to="/#contact">Contact</Link>
+                    <Link to="/contact">Contact</Link>
                     <a
                         href="https://wa.me/254735047202?text=I%20want%20to%20list%20my%20house"
                         className="btn btn-primary"
@@ -68,9 +68,9 @@ const Navbar = () => {
                 {/* Mobile Menu */}
                 <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
                     <Link to="/#listings" onClick={closeMenu}>Vacant Houses</Link>
-                    <Link to="/#how-it-works" onClick={closeMenu}>How It Works</Link>
+                    <Link to="/how-it-works" onClick={closeMenu}>How It Works</Link>
                     <Link to="/about" onClick={closeMenu}>About Us</Link>
-                    <Link to="/#contact" onClick={closeMenu}>Contact</Link>
+                    <Link to="/contact" onClick={closeMenu}>Contact</Link>
                     <a
                         href="https://wa.me/254735047202?text=I%20want%20to%20list%20my%20house"
                         className="btn btn-primary"

@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import ListingDetails from './ListingDetails';
 import AboutUs from './AboutUs';
+import HowItWorks from './HowItWorks';
+import Contact from './Contact';
 import ScrollToTop from './components/ScrollToTop';
 
 import Login from './components/admin/Login';
@@ -15,6 +17,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/listing/:id" element={<ListingDetails />} />
         <Route path="/admin" element={<Login />} />
         <Route path="/admin/dashboard" element={<Dashboard />} />

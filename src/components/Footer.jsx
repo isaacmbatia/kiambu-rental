@@ -51,13 +51,13 @@ const Footer = () => {
                                 <a href="/#listings" style={{ color: '#d1d5db', fontSize: '0.95rem' }}>Vacant Houses</a>
                             </li>
                             <li style={{ marginBottom: '0.6rem' }}>
-                                <a href="/#how-it-works" style={{ color: '#d1d5db', fontSize: '0.95rem' }}>How It Works</a>
+                                <Link to="/how-it-works" style={{ color: '#d1d5db', fontSize: '0.95rem' }}>How It Works</Link>
                             </li>
                             <li style={{ marginBottom: '0.6rem' }}>
                                 <Link to="/about" style={{ color: '#d1d5db', fontSize: '0.95rem' }}>About Us</Link>
                             </li>
                             <li style={{ marginBottom: '0.6rem' }}>
-                                <a href="/#contact" style={{ color: '#d1d5db', fontSize: '0.95rem' }}>Contact</a>
+                                <Link to="/contact" style={{ color: '#d1d5db', fontSize: '0.95rem' }}>Contact</Link>
                             </li>
                             <li style={{ marginBottom: '0.6rem' }}>
                                 <a href="https://wa.me/254735047202" style={{ color: '#d1d5db', fontSize: '0.95rem' }}>List Your House</a>

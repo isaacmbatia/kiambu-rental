@@ -9,18 +9,12 @@ const Footer = () => {
 
                     {/* Logo & Description */}
                     <div>
-                        <div style={{
-                            marginBottom: '1.5rem',
-                            backgroundColor: 'white',
-                            padding: '0.75rem',
-                            borderRadius: '0.5rem',
-                            display: 'inline-block'
-                        }}>
+                        <div style={{ marginBottom: '1.5rem' }}>
                             <img
-                                src={`${import.meta.env.BASE_URL}logo.png`}
+                                src={`${import.meta.env.BASE_URL}footer-logo.png`}
                                 alt="Kiambu Rental"
                                 className="footer-logo"
-                                style={{ display: 'block' }}
+                                style={{ display: 'block', mixBlendMode: 'screen' }}
                             />
                         </div>
                         <p style={{ color: '#d1d5db', marginBottom: '1.5rem', fontSize: '0.95rem', lineHeight: 1.6 }}>

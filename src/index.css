@@ -475,12 +475,12 @@ img {
 }
 
 .footer-logo {
-  height: 70px;
+  height: 120px;
 }
 
 @media (min-width: 768px) {
   .footer-logo {
-    height: 100px;
+    height: 160px;
   }
 }
 

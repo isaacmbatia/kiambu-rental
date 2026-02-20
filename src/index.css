@@ -72,7 +72,8 @@ img {
   font-weight: 600;
   transition: all 0.2s;
   font-size: 0.95rem;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
 }
 
 .btn-primary {
@@ -86,10 +87,18 @@ img {
 }
 
 /* Mobile button adjustments */
+@media (max-width: 768px) {
+  .btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
 @media (max-width: 480px) {
   .btn {
-    padding: 0.6rem 1.2rem;
+    padding: 0.8rem 1rem;
     font-size: 0.875rem;
+    width: 100%;
   }
 }
 

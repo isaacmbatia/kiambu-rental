@@ -389,8 +389,8 @@ const AboutUs = () => {
                         }}>
                             Browse Houses
                         </Link>
-                        <a
-                            href="https://wa.me/254735047202?text=I%20want%20to%20list%20my%20house"
+                        <Link
+                            to="/landlord-terms"
                             className="btn"
                             style={{
                                 backgroundColor: 'transparent',
@@ -400,11 +400,9 @@ const AboutUs = () => {
                                 fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
                                 fontWeight: 600
                             }}
-                            target="_blank"
-                            rel="noreferrer"
                         >
                             List Your Property
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </section>

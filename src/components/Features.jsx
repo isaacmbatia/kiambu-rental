@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Features = () => {
     const steps = [
@@ -90,15 +91,13 @@ const Features = () => {
                 </div>
 
                 <div style={{ textAlign: 'center', marginTop: '4rem' }}>
-                    <a
-                        href="https://wa.me/254735047202?text=I%20want%20to%20list%20my%20vacant%20house"
+                    <Link
+                        to="/landlord-terms"
                         className="btn"
-                        target="_blank"
-                        rel="noreferrer"
                         style={{ backgroundColor: '#f97316', color: 'white', border: 'none', padding: '1rem 2.5rem', fontSize: '1.1rem' }}
                     >
-                        List Your Vacant House on WhatsApp
-                    </a>
+                        List Your Vacant House — Read Terms First
+                    </Link>
                 </div>
             </div>
         </div>

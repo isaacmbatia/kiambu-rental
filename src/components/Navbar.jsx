@@ -41,18 +41,13 @@ const Navbar = () => {
                     <Link to="/about">About Us</Link>
                     <Link to="/contact">Contact</Link>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <a
-                            href="https://wa.me/254735047202?text=I%20want%20to%20list%20my%20house"
-                            className="btn btn-primary"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
+                        <Link to="/landlord-terms" className="btn btn-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.5rem' }}>
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                             </svg>
                             List Your House
-                        </a>
-                        <Link to="/landlord-terms" style={{ fontSize: '0.75rem', color: 'var(--text-light)', marginTop: '0.25rem' }}>Landlord Terms</Link>
+                        </Link>
+                        <span style={{ fontSize: '0.7rem', color: 'var(--text-light)', marginTop: '0.2rem' }}>Read terms first</span>
                     </div>
                 </div>
 
@@ -75,20 +70,18 @@ const Navbar = () => {
                     <Link to="/about" onClick={closeMenu}>About Us</Link>
                     <Link to="/contact" onClick={closeMenu}>Contact</Link>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '1rem' }}>
-                        <a
-                            href="https://wa.me/254735047202?text=I%20want%20to%20list%20my%20house"
+                        <Link
+                            to="/landlord-terms"
                             className="btn btn-primary"
-                            target="_blank"
-                            rel="noreferrer"
                             onClick={closeMenu}
-                            style={{ width: '100%', marginTop: 0 }}
+                            style={{ width: '100%' }}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.5rem' }}>
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                             </svg>
                             List Your House
-                        </a>
-                        <Link to="/landlord-terms" onClick={closeMenu} style={{ fontSize: '0.8rem', color: 'var(--text-light)', borderBottom: 'none', padding: '0.5rem 0 0 0' }}>Landlord Terms</Link>
+                        </Link>
+                        <span style={{ fontSize: '0.75rem', color: 'var(--text-light)', padding: '0.4rem 0 0 0' }}>Read terms first</span>
                     </div>
                 </div>
             </div>

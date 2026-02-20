@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 const LandlordTerms = () => {
+    const [agreed, setAgreed] = useState(false);
+
     useEffect(() => {
         document.title = 'Landlord Listing Terms | Kiambu Rental';
         window.scrollTo(0, 0);
@@ -128,9 +130,34 @@ const LandlordTerms = () => {
                         </div>
 
                         <div style={{ marginTop: '3rem', textAlign: 'center' }}>
-                            <a href="https://wa.me/254735047202?text=I%20have%20read%20the%20terms%20and%20want%20to%20list%20my%20house" target="_blank" rel="noreferrer" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
-                                I Agree, List My Property
+                            <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', cursor: 'pointer', marginBottom: '1.5rem', fontSize: '1rem', color: 'var(--text-dark)' }}>
+                                <input
+                                    type="checkbox"
+                                    checked={agreed}
+                                    onChange={e => setAgreed(e.target.checked)}
+                                    style={{ width: '20px', height: '20px', cursor: 'pointer', accentColor: 'var(--primary)' }}
+                                />
+                                I have read and understood all the terms and conditions above.
+                            </label>
+                            <a
+                                href={agreed ? "https://wa.me/254735047202?text=I%20have%20read%20and%20accepted%20the%20Kiambu%20Rental%20landlord%20terms.%20I%20want%20to%20list%20my%20house." : undefined}
+                                target={agreed ? "_blank" : undefined}
+                                rel="noreferrer"
+                                onClick={!agreed ? e => e.preventDefault() : undefined}
+                                className="btn btn-primary"
+                                style={{
+                                    padding: '1rem 2.5rem',
+                                    fontSize: '1.05rem',
+                                    opacity: agreed ? 1 : 0.4,
+                                    cursor: agreed ? 'pointer' : 'not-allowed',
+                                    pointerEvents: agreed ? 'auto' : 'none'
+                                }}
+                            >
+                                I Agree — List My Property on WhatsApp
                             </a>
+                            {!agreed && (
+                                <p style={{ marginTop: '0.75rem', fontSize: '0.85rem', color: '#ef4444' }}>Please check the box above to confirm you have read the terms.</p>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -30,16 +30,16 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="container navbar-container">
-                <a href="/" className="navbar-logo">
-                    <img src="/logo.png" alt="Kiambu Rental - Verified Houses in Kiambu County" />
-                </a>
+                <Link to="/" className="navbar-logo">
+                    <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Kiambu Rental - Verified Houses in Kiambu County" />
+                </Link>
 
                 {/* Desktop Menu */}
                 <div className="desktop-menu">
-                    <a href="/#listings">Vacant Houses</a>
-                    <a href="/#how-it-works">How It Works</a>
+                    <Link to="/#listings">Vacant Houses</Link>
+                    <Link to="/#how-it-works">How It Works</Link>
                     <Link to="/about">About Us</Link>
-                    <a href="/#contact">Contact</a>
+                    <Link to="/#contact">Contact</Link>
                     <a
                         href="https://wa.me/254735047202?text=I%20want%20to%20list%20my%20house"
                         className="btn btn-primary"
@@ -67,10 +67,10 @@ const Navbar = () => {
 
                 {/* Mobile Menu */}
                 <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
-                    <a href="/#listings" onClick={closeMenu}>Vacant Houses</a>
-                    <a href="/#how-it-works" onClick={closeMenu}>How It Works</a>
+                    <Link to="/#listings" onClick={closeMenu}>Vacant Houses</Link>
+                    <Link to="/#how-it-works" onClick={closeMenu}>How It Works</Link>
                     <Link to="/about" onClick={closeMenu}>About Us</Link>
-                    <a href="/#contact" onClick={closeMenu}>Contact</a>
+                    <Link to="/#contact" onClick={closeMenu}>Contact</Link>
                     <a
                         href="https://wa.me/254735047202?text=I%20want%20to%20list%20my%20house"
                         className="btn btn-primary"

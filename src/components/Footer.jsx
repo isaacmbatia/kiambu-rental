@@ -17,7 +17,7 @@ const Footer = () => {
                             display: 'inline-block'
                         }}>
                             <img
-                                src="/logo.png"
+                                src={`${import.meta.env.BASE_URL}logo.png`}
                                 alt="Kiambu Rental"
                                 className="footer-logo"
                                 style={{ display: 'block' }}

@@ -11,7 +11,7 @@ const TenantHero = () => {
                     left: 0,
                     width: '100%',
                     height: '100%',
-                    backgroundImage: 'url(/hero-bg.png)',
+                    backgroundImage: `url(${import.meta.env.BASE_URL}hero-bg.png)`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     filter: 'brightness(0.6)'

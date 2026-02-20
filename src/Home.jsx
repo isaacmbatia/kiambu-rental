@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import TenantHero from './components/TenantHero';
 import SearchFilters from './components/SearchFilters';
 import AdBanner from './components/AdBanner';
+import { houses as staticHouses } from './data/houses';
 
 function Home() {
     const [houses, setHouses] = useState([]);
@@ -17,16 +18,8 @@ function Home() {
     });
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/houses')
-            .then(res => res.json())
-            .then(data => {
-                const fixedData = data.map(h => ({
-                    ...h,
-                    imageUrl: h.imageUrl.startsWith('/uploads') ? `http://localhost:3000${h.imageUrl}` : h.imageUrl
-                }));
-                setHouses(fixedData);
-            })
-            .catch(err => console.error('Failed to fetch houses:', err));
+        // Use static data since localhost backend is not available on deployed GitHub Pages
+        setHouses(staticHouses);
     }, []);
 
     const getPriceRange = (label) => {

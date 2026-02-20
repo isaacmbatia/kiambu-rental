@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AdBanner from './components/AdBanner';
+import { houses as staticHouses } from './data/houses';
 
 const ListingDetails = () => {
     const { id } = useParams();
@@ -12,26 +13,15 @@ const ListingDetails = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        fetch(`http://localhost:3000/api/houses/${id}`)
-            .then(res => {
-                if (!res.ok) throw new Error('House not found');
-                return res.json();
-            })
-            .then(data => {
-                // Ensure absolute URL for images
-                const fixedHouse = {
-                    ...data,
-                    imageUrl: data.imageUrl.startsWith('/uploads') ? `http://localhost:3000${data.imageUrl}` : data.imageUrl,
-                    images: data.images.map(img => img.startsWith('/uploads') ? `http://localhost:3000${img}` : img)
-                };
-                setHouse(fixedHouse);
-                setSelectedImage(fixedHouse.imageUrl);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.error(err);
-                setLoading(false);
-            });
+        const houseFound = staticHouses.find(h => h.id.toString() === id);
+        if (houseFound) {
+            setHouse(houseFound);
+            setSelectedImage(houseFound.imageUrl);
+            setLoading(false);
+        } else {
+            console.error('House not found');
+            setLoading(false);
+        }
     }, [id]);
 
     if (loading) {

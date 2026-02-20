@@ -5,6 +5,7 @@ import ListingDetails from './ListingDetails';
 import AboutUs from './AboutUs';
 import HowItWorks from './HowItWorks';
 import Contact from './Contact';
+import LandlordTerms from './LandlordTerms';
 import ScrollToTop from './components/ScrollToTop';
 
 import Login from './components/admin/Login';
@@ -19,6 +20,7 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/landlord-terms" element={<LandlordTerms />} />
         <Route path="/listing/:id" element={<ListingDetails />} />
         <Route path="/admin" element={<Login />} />
         <Route path="/admin/dashboard" element={<Dashboard />} />

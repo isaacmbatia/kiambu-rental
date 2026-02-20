@@ -62,6 +62,9 @@ const Footer = () => {
                             <li style={{ marginBottom: '0.6rem' }}>
                                 <a href="https://wa.me/254735047202" style={{ color: '#d1d5db', fontSize: '0.95rem' }}>List Your House</a>
                             </li>
+                            <li style={{ marginBottom: '0.6rem' }}>
+                                <Link to="/landlord-terms" style={{ color: '#d1d5db', fontSize: '0.95rem' }}>Landlord Terms</Link>
+                            </li>
                         </ul>
                     </div>
 

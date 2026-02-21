@@ -83,7 +83,10 @@ const Footer = () => {
 
                 {/* Copyright */}
                 <div className="footer-bottom">
-                    &copy; 2026 Kiambu Rental
+                    &copy; {new Date().getFullYear()} Kiambu Rental
+                    <div style={{ marginTop: '0.5rem' }}>
+                        <Link to="/admin" style={{ color: '#6b7280', textDecoration: 'none', fontSize: '0.75rem', transition: 'color 0.3s' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#6b7280'}>Admin Login</Link>
+                    </div>
                 </div>
             </div>
         </footer>

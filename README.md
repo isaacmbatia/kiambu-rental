@@ -12,13 +12,13 @@ A modern, responsive web application for finding verified vacant rental houses i
 
 ## 🚀 Live Demo
 
-Visit the live site: [https://isaacmbatia.github.io/kiambu-rental/](https://isaacmbatia.github.io/kiambu-rental/)
+Visit the live site: [https://kiambu-rental.vercel.app/](https://kiambu-rental.vercel.app/)
 
 ## 💻 Tech Stack
 
 - **Frontend**: React + Vite
 - **Styling**: CSS with modern design principles
-- **Deployment**: GitHub Pages with automated CI/CD
+- **Deployment**: Vercel with automated CI/CD
 - **Backend**: Node.js/Express (for API endpoints)
 
 ## 🛠️ Local Development
@@ -65,16 +65,14 @@ The built files will be in the `dist` directory.
 
 ## 🚀 Deployment
 
-This project is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
+This project is automatically deployed to **Vercel** when changes are pushed to the `main` branch.
 
-### Manual Deployment
+### Admin Dashboard
+Access the admin panel at: [https://kiambu-rental.vercel.app/admin](https://kiambu-rental.vercel.app/admin)
 
-To deploy manually:
-
-```bash
-npm run build
-npm run preview
-```
+**Credentials:**
+- Username: `ISAACMBATIA.3932`
+- Password: `Mumbai3932.kenya`
 
 ## 📱 Responsive Design
 

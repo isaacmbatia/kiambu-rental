@@ -16,8 +16,8 @@ const Footer = () => {
                     <div className="footer-col-left">
                         {/* Brand */}
                         <div className="footer-brand-col">
-                            <Link to="/" className="footer-logo-link">
-                                <img src={`${import.meta.env.BASE_URL}footer-logo.png`} alt="Kiambu Rental" />
+                            <Link to="/" className="footer-brand-text" style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff', textTransform: 'uppercase', letterSpacing: '0.5px', textDecoration: 'none', marginBottom: '0.5rem', display: 'block' }}>
+                                KIAMBU RENTAL
                             </Link>
                             <p className="footer-description">
                                 Find verified vacant houses in Kiambu County.

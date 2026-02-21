@@ -170,18 +170,20 @@ img {
 }
 
 .navbar-logo img {
-  height: 80px;
+  height: 60px;
+  width: auto;
+  object-fit: contain;
 }
 
 @media (min-width: 768px) {
   .navbar-logo img {
-    height: 120px;
+    height: 80px;
   }
 }
 
 @media (min-width: 1024px) {
   .navbar-logo img {
-    height: 150px;
+    height: 90px;
   }
 }
 
@@ -475,12 +477,14 @@ img {
 }
 
 .footer-logo {
-  height: 120px;
+  width: 320px !important;
+  height: auto !important;
+  max-width: none !important;
 }
 
 @media (min-width: 768px) {
   .footer-logo {
-    height: 160px;
+    width: 380px !important;
   }
 }
 

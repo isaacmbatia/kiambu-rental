@@ -47,7 +47,8 @@ const Dashboard = () => {
 
     const fetchHouses = async () => {
         try {
-            const res = await fetch('http://localhost:3000/api/houses');
+            const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+            const res = await fetch(`${apiBase}/api/houses`);
             const data = await res.json();
             setHouses(data);
         } catch (err) {
@@ -81,7 +82,8 @@ const Dashboard = () => {
         }
 
         try {
-            const res = await fetch('http://localhost:3000/api/houses', {
+            const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+            const res = await fetch(`${apiBase}/api/houses`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -109,7 +111,8 @@ const Dashboard = () => {
 
         const token = localStorage.getItem('token');
         try {
-            await fetch(`http://localhost:3000/api/houses/${id}`, {
+            const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+            await fetch(`${apiBase}/api/houses/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -216,7 +219,7 @@ const Dashboard = () => {
                             {filteredHouses.map(house => (
                                 <div key={house.id} style={{ backgroundColor: 'white', padding: '1rem', borderRadius: '0.5rem', boxShadow: '0 1px 2px rgba(0,0,0,0.05)', display: 'flex', alignItems: 'center', gap: '1rem' }}>
                                     <div style={{ width: '80px', height: '60px', borderRadius: '0.25rem', overflow: 'hidden', backgroundColor: '#e5e7eb' }}>
-                                        {house.imageUrl && <img src={`http://localhost:3000${house.imageUrl}`} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
+                                        {house.imageUrl && <img src={house.imageUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
                                     </div>
                                     <div style={{ flex: 1 }}>
                                         <div style={{ fontWeight: 600 }}>{house.title}</div>

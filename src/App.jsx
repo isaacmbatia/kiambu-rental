@@ -13,7 +13,7 @@ import Dashboard from './components/admin/Dashboard';
 
 function App() {
   return (
-    <Router basename="/kiambu-rental">
+    <Router>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />

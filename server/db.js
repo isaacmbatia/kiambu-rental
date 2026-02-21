@@ -1,50 +1,54 @@
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
-
-// Open the database
-const dbPromise = open({
-    filename: './database.sqlite',
-    driver: sqlite3.Database
-});
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const setupDb = async () => {
-    const db = await dbPromise;
+  try {
+    const mongoUri = process.env.MONGODB_URI;
+    if (!mongoUri) {
+      throw new Error('MONGODB_URI environment variable is not defined.');
+    }
 
-    // Create Houses Table
-    await db.exec(`
-    CREATE TABLE IF NOT EXISTS houses (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      title TEXT NOT NULL,
-      location TEXT NOT NULL,
-      price INTEGER NOT NULL,
-      type TEXT NOT NULL,
-      description TEXT,
-      amenities TEXT,
-      landmarks TEXT,
-      imageUrl TEXT,
-      images TEXT,
-      isNew BOOLEAN DEFAULT 0,
-      verified BOOLEAN DEFAULT 1,
-      createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
-    )
-  `);
+    await mongoose.connect(mongoUri);
+    console.log('MongoDB connected successfully');
 
-    // Create Admin User Table (for simple auth)
-    await db.exec(`
-    CREATE TABLE IF NOT EXISTS users (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      username TEXT UNIQUE,
-      password TEXT
-    )
-  `);
+    // Seed Admin User if not exists
+    const adminCount = await User.countDocuments({ username: 'ISAACMBATIA.3932' });
+    if (adminCount === 0) {
+      const hashedPassword = await bcrypt.hash('Mumbai3932.kenya', 10);
+      await User.create({ username: 'ISAACMBATIA.3932', password: hashedPassword });
+      console.log('Admin user seeded: ISAACMBATIA.3932');
+    }
 
-    // Check if admin exists, if not create default
-    // Default: admin / admin123 (In production, use hashed passwords)
-    // For simplicity here we will store a simple hash or just plain text if easier for now, 
-    // but let's do it right with bcrypt in the route handler or seeding.
-    // We'll seed in the main server start if needed.
+  } catch (error) {
+    console.error('MongoDB connection error:', error);
+    process.exit(1);
+  }
 };
 
-export const getDb = async () => {
-    return await dbPromise;
-};
+// --- Mongoose Schemas ---
+
+const houseSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  location: { type: String, required: true },
+  price: { type: Number, required: true },
+  type: { type: String, required: true },
+  description: String,
+  amenities: [String],
+  landmarks: String,
+  imageUrl: String,
+  images: [String],
+  isNew: { type: Boolean, default: true },
+  verified: { type: Boolean, default: true },
+  createdAt: { type: Date, default: Date.now }
+});
+
+export const House = mongoose.model('House', houseSchema);
+
+const userSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true }
+});
+
+export const User = mongoose.model('User', userSchema);

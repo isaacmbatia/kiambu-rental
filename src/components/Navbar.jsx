@@ -31,7 +31,7 @@ const Navbar = () => {
         <nav className="navbar">
             <div className="container navbar-container">
                 <Link to="/" className="navbar-logo">
-                    <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Kiambu Rental - Verified Houses in Kiambu County" />
+                    <img src={`${import.meta.env.BASE_URL}header-logo.png?v=${Date.now()}`} alt="Kiambu Rental - Verified Houses in Kiambu County" />
                 </Link>
 
                 {/* Desktop Menu */}

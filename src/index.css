@@ -477,14 +477,15 @@ img {
 }
 
 .footer-logo {
-  width: 320px !important;
+  width: 100% !important;
+  max-width: 320px !important;
   height: auto !important;
-  max-width: none !important;
 }
 
 @media (min-width: 768px) {
   .footer-logo {
-    width: 380px !important;
+    width: 100% !important;
+    max-width: 380px !important;
   }
 }
 

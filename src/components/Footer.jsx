@@ -12,10 +12,10 @@ const Footer = () => {
                         <div style={{ marginBottom: '1.5rem' }}>
                             <Link to="/">
                                 <img
-                                    src={`${import.meta.env.BASE_URL}footer-logo-new.jpeg`}
+                                    src={`${import.meta.env.BASE_URL}footer-logo-transparent.png`}
                                     alt="Kiambu Rental"
                                     className="footer-logo"
-                                    style={{ display: 'block', mixBlendMode: 'screen' }}
+                                    style={{ display: 'block' }}
                                 />
                             </Link>
                         </div>

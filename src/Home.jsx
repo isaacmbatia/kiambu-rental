@@ -11,6 +11,8 @@ import AdBanner from './components/AdBanner';
 
 function Home() {
     const [houses, setHouses] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const postsPerPage = 16;
     const [filters, setFilters] = useState({
         location: "All Locations",
         type: "All Types",
@@ -61,6 +63,22 @@ function Home() {
         return true;
     });
 
+    // Pagination Logic
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentHouses = filteredHouses.slice(indexOfFirstPost, indexOfLastPost);
+    const totalPages = Math.ceil(filteredHouses.length / postsPerPage);
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        window.scrollTo({ top: document.getElementById('listings').offsetTop - 100, behavior: 'smooth' });
+    };
+
+    // Reset to page 1 when filters change
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [filters]);
+
     return (
         <div className="home-page">
             <Navbar />
@@ -78,9 +96,9 @@ function Home() {
                 </div>
 
                 <div className="responsive-grid">
-                    {filteredHouses.length > 0 ? (
-                        filteredHouses.map(house => (
-                            <ListingCard key={house.id} house={house} />
+                    {currentHouses.length > 0 ? (
+                        currentHouses.map(house => (
+                            <ListingCard key={house._id || house.id} house={house} />
                         ))
                     ) : (
                         <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '4rem 2rem', color: 'var(--text-light)' }}>
@@ -94,6 +112,44 @@ function Home() {
                         </div>
                     )}
                 </div>
+
+                {/* Pagination Controls */}
+                {totalPages > 1 && (
+                    <div className="pagination" style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginTop: '3rem', flexWrap: 'wrap' }}>
+                        <button
+                            onClick={() => paginate(currentPage - 1)}
+                            disabled={currentPage === 1}
+                            className="btn btn-outline"
+                            style={{ padding: '0.5rem 1rem', opacity: currentPage === 1 ? 0.5 : 1 }}
+                        >
+                            &larr; Prev
+                        </button>
+
+                        {[...Array(totalPages)].map((_, i) => (
+                            <button
+                                key={i + 1}
+                                onClick={() => paginate(i + 1)}
+                                className={`btn ${currentPage === i + 1 ? 'btn-primary' : 'btn-outline'}`}
+                                style={{
+                                    minWidth: '40px',
+                                    padding: '0.5rem',
+                                    borderRadius: '0.5rem'
+                                }}
+                            >
+                                {i + 1}
+                            </button>
+                        ))}
+
+                        <button
+                            onClick={() => paginate(currentPage + 1)}
+                            disabled={currentPage === totalPages}
+                            className="btn btn-outline"
+                            style={{ padding: '0.5rem 1rem', opacity: currentPage === totalPages ? 0.5 : 1 }}
+                        >
+                            Next &rarr;
+                        </button>
+                    </div>
+                )}
             </div>
 
             <div className="container">

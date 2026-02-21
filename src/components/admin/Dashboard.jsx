@@ -18,6 +18,7 @@ const Dashboard = () => {
         landmarks: ''
     });
     const [images, setImages] = useState([]);
+    const [submitting, setSubmitting] = useState(false);
     const navigate = useNavigate();
 
     // Filter Options
@@ -81,8 +82,10 @@ const Dashboard = () => {
             data.append('images', images[i]);
         }
 
+        setSubmitting(true);
         try {
             const apiBase = import.meta.env.VITE_API_URL || '';
+            console.log('Posting to:', `${apiBase}/api/houses`);
             const res = await fetch(`${apiBase}/api/houses`, {
                 method: 'POST',
                 headers: {
@@ -97,26 +100,36 @@ const Dashboard = () => {
                     title: '', location: '', price: '', type: '', description: '', amenities: '', landmarks: ''
                 });
                 setImages([]);
+                // Clear the file input manually if needed
+                const fileInput = document.querySelector('input[type="file"]');
+                if (fileInput) fileInput.value = '';
+
                 fetchHouses();
             } else {
-                alert('Failed to post house');
+                const errorData = await res.json();
+                alert(`Failed to post: ${errorData.message || 'Server error'}`);
             }
         } catch (err) {
-            alert('Error posting house');
+            console.error('Submit Error:', err);
+            alert('Error connecting to posting service. Check if server is running.');
+        } finally {
+            setSubmitting(false);
         }
     };
 
     const handleDelete = async (id) => {
+        if (!id) return;
         if (!window.confirm('Are you sure you want to delete this listing?')) return;
 
         const token = localStorage.getItem('token');
         try {
             const apiBase = import.meta.env.VITE_API_URL || '';
-            await fetch(`${apiBase}/api/houses/${id}`, {
+            const res = await fetch(`${apiBase}/api/houses/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
-            fetchHouses();
+            if (res.ok) fetchHouses();
+            else alert('Failed to delete listing');
         } catch (err) {
             alert('Error deleting house');
         }
@@ -160,7 +173,7 @@ const Dashboard = () => {
                     <button onClick={handleLogout} className="btn" style={{ border: '1px solid #d1d5db' }}>Logout</button>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr lg:1fr', gap: '2rem' }}>
+                <div className="admin-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
 
                     {/* Add House Form */}
                     <div style={{ backgroundColor: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
@@ -194,7 +207,14 @@ const Dashboard = () => {
                                 <input type="file" multiple accept="image/*" onChange={handleImageChange} required />
                             </div>
 
-                            <button type="submit" className="btn btn-primary" style={{ marginTop: '1rem' }}>Post House</button>
+                            <button
+                                type="submit"
+                                className="btn btn-primary"
+                                style={{ marginTop: '1rem', opacity: submitting ? 0.7 : 1, cursor: submitting ? 'not-allowed' : 'pointer' }}
+                                disabled={submitting}
+                            >
+                                {submitting ? 'Posting...' : 'Post House'}
+                            </button>
                         </form>
                     </div>
 
@@ -217,7 +237,7 @@ const Dashboard = () => {
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                             {filteredHouses.map(house => (
-                                <div key={house.id} style={{ backgroundColor: 'white', padding: '1rem', borderRadius: '0.5rem', boxShadow: '0 1px 2px rgba(0,0,0,0.05)', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                <div key={house._id || house.id} style={{ backgroundColor: 'white', padding: '1rem', borderRadius: '0.5rem', boxShadow: '0 1px 2px rgba(0,0,0,0.05)', display: 'flex', alignItems: 'center', gap: '1rem' }}>
                                     <div style={{ width: '80px', height: '60px', borderRadius: '0.25rem', overflow: 'hidden', backgroundColor: '#e5e7eb' }}>
                                         {house.imageUrl && <img src={house.imageUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
                                     </div>
@@ -226,7 +246,7 @@ const Dashboard = () => {
                                         <div style={{ fontSize: '0.85rem', color: '#6b7280' }}>{house.location} - KSh {house.price}</div>
                                     </div>
                                     <button
-                                        onClick={() => handleDelete(house.id)}
+                                        onClick={() => handleDelete(house._id || house.id)}
                                         style={{ color: 'red', background: 'none', border: 'none', cursor: 'pointer', padding: '0.5rem' }}
                                     >
                                         Delete

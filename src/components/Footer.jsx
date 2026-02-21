@@ -23,8 +23,11 @@ const Footer = () => {
                             <p className="footer-description">
                                 Find verified vacant houses in Kiambu County.
                                 <br />
-                                <span style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '0.4rem', display: 'block' }}>
-                                    Use filter to find your prefered: #LOCATION, #HOUSE TYPE, #PRICE
+                                <span style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '0.6rem', display: 'block', lineHeight: '1.6' }}>
+                                    (Filter by:<br />
+                                    Location,<br />
+                                    House type,<br />
+                                    Price)
                                 </span>
                             </p>
                         </div>

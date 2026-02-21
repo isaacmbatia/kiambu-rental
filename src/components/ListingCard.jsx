@@ -9,7 +9,7 @@ const ListingCard = ({ house }) => {
             display: 'flex',
             flexDirection: 'column'
         }}>
-            <Link to={`/listing/${house.id}`} style={{ position: 'relative', display: 'block' }}>
+            <Link to={`/listing/${house._id || house.id}`} style={{ position: 'relative', display: 'block' }}>
                 <img
                     src={house.imageUrl}
                     alt={house.title}
@@ -50,7 +50,7 @@ const ListingCard = ({ house }) => {
 
             <div className="listing-card-content" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <h3 style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', fontWeight: 600, marginBottom: '0.5rem' }}>
-                    <Link to={`/listing/${house.id}`} style={{ color: 'inherit' }}>{house.title}</Link>
+                    <Link to={`/listing/${house._id || house.id}`} style={{ color: 'inherit' }}>{house.title}</Link>
                 </h3>
                 <div style={{
                     display: 'flex',
@@ -83,7 +83,7 @@ const ListingCard = ({ house }) => {
 
                 <div style={{ marginTop: 'auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
                     <Link
-                        to={`/listing/${house.id}`}
+                        to={`/listing/${house._id || house.id}`}
                         className="btn btn-primary"
                         style={{
                             textAlign: 'center',

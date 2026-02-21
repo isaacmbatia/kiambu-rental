@@ -3,24 +3,33 @@ import { useParams, Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AdBanner from './components/AdBanner';
-import { houses as staticHouses } from './data/houses';
+
 
 const ListingDetails = () => {
     const { id } = useParams();
 
-    // Find house synchronously to avoid loading flash
-    const initialHouse = staticHouses.find(h => h.id.toString() === id);
-
-    const [house, setHouse] = useState(initialHouse || null);
-    const [selectedImage, setSelectedImage] = useState(initialHouse ? initialHouse.imageUrl : null);
+    const [house, setHouse] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [selectedImage, setSelectedImage] = useState(null);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (!house && initialHouse) {
-            setHouse(initialHouse);
-            setSelectedImage(initialHouse.imageUrl);
-        }
-    }, [id, initialHouse, house]);
+        const fetchHouse = async () => {
+            try {
+                const apiBase = import.meta.env.VITE_API_URL || '';
+                const res = await fetch(`${apiBase}/api/houses/${id}`);
+                if (!res.ok) throw new Error('House not found');
+                const data = await res.json();
+                setHouse(data);
+                setSelectedImage(data.imageUrl);
+            } catch (err) {
+                console.error('Error fetching house details:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchHouse();
+    }, [id]);
 
 
 
@@ -181,7 +190,7 @@ const ListingDetails = () => {
                                 top: '100px'
                             }}>
                                 <a
-                                    href={`https://wa.me/254735047202?text=Hello,%20I%20am%20interested%20in%20the%20${house.title}%20in%20${house.location}%20(ID:%20${house.id})`}
+                                    href={`https://wa.me/254735047202?text=Hello,%20I%20am%20interested%20in%20the%20${house.title}%20in%20${house.location}%20(ID:%20${house._id || house.id})`}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="btn"

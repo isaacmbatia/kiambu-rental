@@ -7,10 +7,10 @@ import Footer from './components/Footer';
 import TenantHero from './components/TenantHero';
 import SearchFilters from './components/SearchFilters';
 import AdBanner from './components/AdBanner';
-import { houses as staticHouses } from './data/houses';
+
 
 function Home() {
-    const [houses, setHouses] = useState(staticHouses);
+    const [houses, setHouses] = useState([]);
     const [filters, setFilters] = useState({
         location: "All Locations",
         type: "All Types",
@@ -18,8 +18,17 @@ function Home() {
     });
 
     useEffect(() => {
-        // Use static data since localhost backend is not available on deployed GitHub Pages
-        setHouses(staticHouses);
+        const fetchHouses = async () => {
+            try {
+                const apiBase = import.meta.env.VITE_API_URL || '';
+                const res = await fetch(`${apiBase}/api/houses`);
+                const data = await res.json();
+                setHouses(data);
+            } catch (err) {
+                console.error('Error fetching houses:', err);
+            }
+        };
+        fetchHouses();
     }, []);
 
     const getPriceRange = (label) => {

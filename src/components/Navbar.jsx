@@ -30,8 +30,8 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="container navbar-container">
-                <Link to="/" className="navbar-logo">
-                    <img src={`${import.meta.env.BASE_URL}header-logo.png?v=${Date.now()}`} alt="Kiambu Rental - Verified Houses in Kiambu County" />
+                <Link to="/" className="navbar-brand-text" style={{ fontSize: '1.5rem', fontWeight: 800, color: '#1f2937', textTransform: 'uppercase', letterSpacing: '0.5px', textDecoration: 'none' }}>
+                    KIAMBU RENTAL
                 </Link>
 
                 {/* Desktop Menu */}

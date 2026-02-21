@@ -17,11 +17,7 @@ const Footer = () => {
                         {/* Brand */}
                         <div className="footer-brand-col">
                             <Link to="/" className="footer-logo-link">
-                                <img
-                                    src={`${import.meta.env.BASE_URL}footer-logo-transparent.png`}
-                                    alt="Kiambu Rental"
-                                    className="footer-logo"
-                                />
+                                <img src={`${import.meta.env.BASE_URL}footer-logo.png`} alt="Kiambu Rental" />
                             </Link>
                             <p className="footer-description">
                                 Find verified vacant houses in Kiambu County.

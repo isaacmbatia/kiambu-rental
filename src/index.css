@@ -1,7 +1,7 @@
 /* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* CSS Updated: 2026-02-21 19:29:00 */
+/* CSS Updated: 2026-02-21 19:33:00 */
 :root {
   --primary: #16a34a;
   --primary-hover: #15803d;
@@ -528,7 +528,7 @@ img {
   margin-bottom: 0.5rem !important;
   text-decoration: none !important;
   font-weight: 800 !important;
-  font-size: 1.25rem !important;
+  font-size: 25px !important;
   color: white !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
@@ -538,7 +538,7 @@ img {
 
 @media (min-width: 768px) {
   .footer-brand-text {
-    font-size: 1.5rem !important;
+    font-size: 29px !important;
   }
 }
 

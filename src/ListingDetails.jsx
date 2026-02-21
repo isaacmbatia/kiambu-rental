@@ -7,34 +7,22 @@ import { houses as staticHouses } from './data/houses';
 
 const ListingDetails = () => {
     const { id } = useParams();
-    const [house, setHouse] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [selectedImage, setSelectedImage] = useState(null);
+
+    // Find house synchronously to avoid loading flash
+    const initialHouse = staticHouses.find(h => h.id.toString() === id);
+
+    const [house, setHouse] = useState(initialHouse || null);
+    const [selectedImage, setSelectedImage] = useState(initialHouse ? initialHouse.imageUrl : null);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        const houseFound = staticHouses.find(h => h.id.toString() === id);
-        if (houseFound) {
-            setHouse(houseFound);
-            setSelectedImage(houseFound.imageUrl);
-            setLoading(false);
-        } else {
-            console.error('House not found');
-            setLoading(false);
+        if (!house && initialHouse) {
+            setHouse(initialHouse);
+            setSelectedImage(initialHouse.imageUrl);
         }
-    }, [id]);
+    }, [id, initialHouse, house]);
 
-    if (loading) {
-        return (
-            <div className="app">
-                <Navbar />
-                <div className="container section" style={{ textAlign: 'center', minHeight: '60vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <div style={{ fontSize: '1.2rem', color: 'var(--text-light)' }}>Loading details...</div>
-                </div>
-                <Footer />
-            </div>
-        );
-    }
+
 
     if (!house) {
         return (

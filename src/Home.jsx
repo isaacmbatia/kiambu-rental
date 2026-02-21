@@ -10,7 +10,7 @@ import AdBanner from './components/AdBanner';
 import { houses as staticHouses } from './data/houses';
 
 function Home() {
-    const [houses, setHouses] = useState([]);
+    const [houses, setHouses] = useState(staticHouses);
     const [filters, setFilters] = useState({
         location: "All Locations",
         type: "All Types",

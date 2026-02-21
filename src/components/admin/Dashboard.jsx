@@ -47,7 +47,7 @@ const Dashboard = () => {
 
     const fetchHouses = async () => {
         try {
-            const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+            const apiBase = import.meta.env.VITE_API_URL || '';
             const res = await fetch(`${apiBase}/api/houses`);
             const data = await res.json();
             setHouses(data);
@@ -82,7 +82,7 @@ const Dashboard = () => {
         }
 
         try {
-            const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+            const apiBase = import.meta.env.VITE_API_URL || '';
             const res = await fetch(`${apiBase}/api/houses`, {
                 method: 'POST',
                 headers: {
@@ -111,7 +111,7 @@ const Dashboard = () => {
 
         const token = localStorage.getItem('token');
         try {
-            const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+            const apiBase = import.meta.env.VITE_API_URL || '';
             await fetch(`${apiBase}/api/houses/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }

@@ -10,7 +10,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+            const apiBase = import.meta.env.VITE_API_URL || '';
             const res = await fetch(`${apiBase}/api/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

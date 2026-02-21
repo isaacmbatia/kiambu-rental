@@ -30,7 +30,8 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="container navbar-container">
-                <Link to="/" className="navbar-brand-text" style={{ fontSize: '1.5rem', fontWeight: 800, color: '#1f2937', textTransform: 'uppercase', letterSpacing: '0.5px', textDecoration: 'none' }}>
+                <Link to="/" className="navbar-brand-text" style={{ display: 'flex', alignItems: 'center', fontSize: '1.5rem', fontWeight: 800, color: '#1f2937', textTransform: 'uppercase', letterSpacing: '0.5px', textDecoration: 'none' }}>
+                    <img src={`${import.meta.env.BASE_URL}logo-icon.png`} alt="" style={{ height: '32px', marginRight: '10px' }} />
                     KIAMBU RENTAL
                 </Link>
 

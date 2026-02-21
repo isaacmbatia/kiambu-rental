@@ -1,7 +1,7 @@
 /* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* CSS Updated: 2026-02-21 19:33:00 */
+/* CSS Updated: 2026-02-21 19:42:00 */
 :root {
   --primary: #16a34a;
   --primary-hover: #15803d;
@@ -180,7 +180,13 @@ img {
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
   white-space: nowrap !important;
-  -webkit-tap-highlight-color: transparent !important;
+}
+
+.navbar-brand-text img {
+  height: 32px !important;
+  width: auto !important;
+  margin-right: 10px !important;
+  flex-shrink: 0;
 }
 
 @media (min-width: 768px) {
@@ -524,7 +530,8 @@ img {
 }
 
 .footer-brand-text {
-  display: block !important;
+  display: flex !important;
+  align-items: center !important;
   margin-bottom: 0.5rem !important;
   text-decoration: none !important;
   font-weight: 800 !important;
@@ -533,7 +540,13 @@ img {
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
   white-space: nowrap !important;
-  -webkit-tap-highlight-color: transparent !important;
+}
+
+.footer-brand-text img {
+  height: 32px !important;
+  width: auto !important;
+  margin-right: 10px !important;
+  flex-shrink: 0;
 }
 
 @media (min-width: 768px) {

@@ -169,21 +169,32 @@ img {
   }
 }
 
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  max-width: 65%;
+  /* Prevent pushing the hamburger menu away */
+  flex-shrink: 0;
+}
+
 .navbar-logo img {
-  height: 60px;
+  height: 75%;
+  /* About 75% of header height */
   width: auto;
+  max-width: 100%;
   object-fit: contain;
 }
 
 @media (min-width: 768px) {
-  .navbar-logo img {
-    height: 80px;
+  .navbar-logo {
+    max-width: 400px;
+    /* Allow wider logo on larger screens */
   }
-}
 
-@media (min-width: 1024px) {
   .navbar-logo img {
-    height: 90px;
+    height: 80%;
+    /* Slightly larger proportion on desktop */
   }
 }
 

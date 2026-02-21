@@ -16,8 +16,8 @@ const Footer = () => {
                     <div className="footer-col-left">
                         {/* Brand */}
                         <div className="footer-brand-col">
-                            <Link to="/" className="footer-brand-text" style={{ display: 'flex', alignItems: 'center', fontSize: '20px', fontWeight: 800, color: '#ffffff', textTransform: 'uppercase', letterSpacing: '0.5px', textDecoration: 'none', marginBottom: '0.5rem' }}>
-                                <img src={`${import.meta.env.BASE_URL}logo-icon.png`} alt="" style={{ height: '28px', marginRight: '10px' }} />
+                            <Link to="/" className="footer-brand-text" style={{ display: 'flex', alignItems: 'center', fontSize: '14px', fontWeight: 800, color: '#ffffff', textTransform: 'uppercase', letterSpacing: '0.5px', textDecoration: 'none', marginBottom: '0.5rem' }}>
+                                <img src={`${import.meta.env.BASE_URL}logo-icon.png`} alt="" style={{ height: '20px', marginRight: '10px' }} />
                                 KIAMBU RENTAL
                             </Link>
                             <p className="footer-description">

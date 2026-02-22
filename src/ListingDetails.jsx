@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AdBanner from './components/AdBanner';
+import { getOptimizedImage } from './utils/imageUtils';
+import { apiCache } from './utils/apiCache';
 
 
 const ListingDetails = () => {
@@ -17,13 +19,24 @@ const ListingDetails = () => {
         const fetchHouse = async () => {
             try {
                 const apiBase = import.meta.env.VITE_API_URL || '';
-                const res = await fetch(`${apiBase}/api/houses/${id}`);
+                const cacheKey = `${apiBase}/api/houses/${id}`;
+                const cached = apiCache.get(cacheKey);
+
+                if (cached) {
+                    setHouse(cached);
+                    setSelectedImage(cached.imageUrl);
+                    setLoading(false);
+                    return;
+                }
+
+                const res = await fetch(cacheKey);
                 if (!res.ok) throw new Error('House not found');
                 const data = await res.json();
                 setHouse(data);
                 setSelectedImage(data.imageUrl);
+                apiCache.set(cacheKey, data);
             } catch (err) {
-                console.error('Error fetching house details:', err);
+                // Silent error in production
             } finally {
                 setLoading(false);
             }
@@ -69,10 +82,11 @@ const ListingDetails = () => {
                         <div style={{ backgroundColor: 'white', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
 
                             {/* Main Image */}
-                            <div style={{ height: '400px', width: '100%', position: 'relative' }}>
+                            <div className="zoom-hover" style={{ height: '400px', width: '100%', position: 'relative' }}>
                                 <img
-                                    src={selectedImage || house.imageUrl}
+                                    src={getOptimizedImage(selectedImage || house.imageUrl, 800)}
                                     alt={house.title}
+                                    loading="lazy"
                                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 />
                                 {house.verified && (
@@ -109,7 +123,7 @@ const ListingDetails = () => {
                                             }
                                         }}
                                     >
-                                        <img src={img} alt={`View ${index + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                        <img src={getOptimizedImage(img, 200)} alt={`View ${index + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                     </div>
                                 ))}
                             </div>

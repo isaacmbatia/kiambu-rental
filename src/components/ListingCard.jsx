@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { getOptimizedImage } from '../utils/imageUtils';
 
 const ListingCard = ({ house }) => {
     return (
@@ -11,9 +12,10 @@ const ListingCard = ({ house }) => {
         }}>
             <Link to={`/listing/${house._id || house.id}`} style={{ position: 'relative', display: 'block' }}>
                 <img
-                    src={house.imageUrl}
+                    src={getOptimizedImage(house.imageUrl, 400)}
                     alt={house.title}
                     className="listing-card-image"
+                    loading="lazy"
                     style={{ width: '100%', objectFit: 'cover' }}
                 />
                 {house.verified && (
@@ -116,4 +118,4 @@ const ListingCard = ({ house }) => {
     );
 };
 
-export default ListingCard;
+export default memo(ListingCard);

@@ -910,4 +910,63 @@ body.menu-open {
     min-height: 44px;
     min-width: 44px;
   }
+}@keyframes skeleton-loading {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
 }
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+.skeleton-image {
+  height: 200px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.skeleton-title {
+  height: 24px;
+  width: 80%;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-text {
+  height: 16px;
+  width: 60%;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-button {
+  height: 40px;
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Zoom Hover Effect */
+.zoom-hover {
+  overflow: hidden;
+}
+
+.zoom-hover img {
+  transition: transform 0.3s ease;
+}
+
+@media (min-width: 769px) {
+  .zoom-hover:hover img {
+    transform: scale(1.1);
+  }
+}
+

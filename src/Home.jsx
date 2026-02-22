@@ -7,10 +7,12 @@ import Footer from './components/Footer';
 import TenantHero from './components/TenantHero';
 import SearchFilters from './components/SearchFilters';
 import AdBanner from './components/AdBanner';
+import { apiCache } from './utils/apiCache';
 
 
 function Home() {
     const [houses, setHouses] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const postsPerPage = 16;
     const [filters, setFilters] = useState({
@@ -23,11 +25,23 @@ function Home() {
         const fetchHouses = async () => {
             try {
                 const apiBase = import.meta.env.VITE_API_URL || '';
-                const res = await fetch(`${apiBase}/api/houses`);
+                const cacheKey = `${apiBase}/api/houses`;
+                const cached = apiCache.get(cacheKey);
+
+                if (cached) {
+                    setHouses(cached);
+                    setLoading(false);
+                    return;
+                }
+
+                const res = await fetch(cacheKey);
                 const data = await res.json();
                 setHouses(data);
+                apiCache.set(cacheKey, data);
             } catch (err) {
-                console.error('Error fetching houses:', err);
+                // Silent error in production
+            } finally {
+                setLoading(false);
             }
         };
         fetchHouses();
@@ -92,11 +106,21 @@ function Home() {
             <div className="section container" id="listings">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
                     <h2 className="section-title" style={{ margin: 0, textAlign: 'left' }}>Latest Verified Houses</h2>
-                    <a href="#" style={{ color: 'var(--primary)', fontWeight: 600 }}>View All &rarr;</a>
+
                 </div>
 
                 <div className="responsive-grid">
-                    {currentHouses.length > 0 ? (
+                    {loading ? (
+                        [...Array(8)].map((_, i) => (
+                            <div key={i} className="skeleton-card">
+                                <div className="skeleton skeleton-image"></div>
+                                <div className="skeleton skeleton-title"></div>
+                                <div className="skeleton skeleton-text"></div>
+                                <div className="skeleton skeleton-text" style={{ width: '40%' }}></div>
+                                <div className="skeleton skeleton-button"></div>
+                            </div>
+                        ))
+                    ) : currentHouses.length > 0 ? (
                         currentHouses.map(house => (
                             <ListingCard key={house._id || house.id} house={house} />
                         ))

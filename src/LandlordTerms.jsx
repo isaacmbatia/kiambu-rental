@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -54,8 +55,25 @@ const LandlordTerms = () => {
                         borderRadius: '1rem',
                         boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
                         lineHeight: '1.8',
-                        color: 'var(--text-dark)'
+                        color: 'var(--text-dark)',
+                        position: 'relative'
                     }}>
+                        {/* Quick Admin Access Button */}
+                        <div style={{ textAlign: 'right', marginBottom: '2rem' }}>
+                            <Link 
+                                to="/admin" 
+                                className="btn" 
+                                style={{ 
+                                    backgroundColor: '#f3f4f6', 
+                                    color: '#4b5563', 
+                                    fontSize: '0.85rem',
+                                    border: '1px solid #d1d5db',
+                                    padding: '0.5rem 1rem'
+                                }}
+                            >
+                                Take me to admin. I know the rules
+                            </Link>
+                        </div>
                         <p style={{ fontSize: '1.1rem', marginBottom: '2.5rem', color: 'var(--text-light)', textAlign: 'center' }}>
                             Kiambu Rental provides landlords with a simple and affordable platform to market rental properties and secure tenants efficiently.
                         </p>

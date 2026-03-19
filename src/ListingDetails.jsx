@@ -200,7 +200,6 @@ const ListingDetails = () => {
                         {/* Sticky Sidebar / CTA */}
                         {/* Note: In a real responsive layout this might move. For now we put it below on mobile or stick it. */}
                         <div style={{ marginTop: '2rem' }}>
-
                             <div style={{
                                 backgroundColor: 'white',
                                 padding: '2rem',
@@ -211,7 +210,7 @@ const ListingDetails = () => {
                                 top: '100px'
                             }}>
                                 <a
-                                    href={`https://wa.me/254735047202?text=Hello,%20I%20am%20interested%20in%20the%20${house.title}%20in%20${house.location}%20(ID:%20${house._id || house.id})`}
+                                    href={`https://wa.me/254735047202?text=${encodeURIComponent(`Hello, I am interested in the ${house.title} in ${house.location} (Code: ${house.houseCode || house._id || house.id})`)}`}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="btn"

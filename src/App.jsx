@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import ListingDetails from './ListingDetails';
 import AboutUs from './AboutUs';
+import PrivacyPolicy from './PrivacyPolicy';
+import BlogList from './BlogList';
+import BlogPost from './BlogPost';
 import HowItWorks from './HowItWorks';
 import Contact from './Contact';
 import LandlordTerms from './LandlordTerms';
@@ -18,6 +21,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/blog" element={<BlogList />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/landlord-terms" element={<LandlordTerms />} />

@@ -18,36 +18,6 @@ const ListingCard = ({ house }) => {
                     loading="lazy"
                     style={{ width: '100%', objectFit: 'cover' }}
                 />
-                {house.verified && (
-                    <span style={{
-                        position: 'absolute',
-                        top: '10px',
-                        left: '10px',
-                        backgroundColor: 'var(--primary)',
-                        color: 'white',
-                        padding: '0.25rem 0.75rem',
-                        borderRadius: '9999px',
-                        fontSize: '0.7rem',
-                        fontWeight: 'bold'
-                    }}>
-                        VERIFIED
-                    </span>
-                )}
-                {house.isNew && (
-                    <span style={{
-                        position: 'absolute',
-                        top: '10px',
-                        right: '10px',
-                        backgroundColor: '#f97316',
-                        color: 'white',
-                        padding: '0.25rem 0.75rem',
-                        borderRadius: '9999px',
-                        fontSize: '0.7rem',
-                        fontWeight: 'bold'
-                    }}>
-                        NEW
-                    </span>
-                )}
             </Link>
 
             <div className="listing-card-content" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>

@@ -40,6 +40,7 @@ const Navbar = () => {
                     <Link to="/#listings">Vacant Houses</Link>
                     <Link to="/how-it-works">How It Works</Link>
                     <Link to="/about">About Us</Link>
+                    <Link to="/blog">Blog</Link>
                     <Link to="/contact">Contact</Link>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <Link to="/landlord-terms" className="btn btn-primary">
@@ -69,6 +70,7 @@ const Navbar = () => {
                     <Link to="/#listings" onClick={closeMenu}>Vacant Houses</Link>
                     <Link to="/how-it-works" onClick={closeMenu}>How It Works</Link>
                     <Link to="/about" onClick={closeMenu}>About Us</Link>
+                    <Link to="/blog" onClick={closeMenu}>Blog</Link>
                     <Link to="/contact" onClick={closeMenu}>Contact</Link>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '1rem' }}>
                         <Link

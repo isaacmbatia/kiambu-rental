@@ -54,7 +54,9 @@ const Footer = () => {
                                 <li><a href="/#listings" className="footer-link">Vacant Houses</a></li>
                                 <li><Link to="/how-it-works" className="footer-link">How It Works</Link></li>
                                 <li><Link to="/about" className="footer-link">About Us</Link></li>
+                                <li><Link to="/blog" className="footer-link">Blog</Link></li>
                                 <li><Link to="/contact" className="footer-link">Contact</Link></li>
+                                <li><Link to="/privacy-policy" className="footer-link">Privacy Policy</Link></li>
                                 <li><Link to="/landlord-terms" className="footer-link">List Your House</Link></li>
                             </ul>
                         </div>

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import AdBanner from './components/AdBanner';
 import { getOptimizedImage } from './utils/imageUtils';
 import { apiCache } from './utils/apiCache';
 
@@ -46,13 +45,28 @@ const ListingDetails = () => {
 
 
 
+    if (loading) {
+        return (
+            <div className="app">
+                <Navbar />
+                <div className="container section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}>
+                    <div className="skeleton-image" style={{ width: '100%', maxWidth: '800px', height: '400px', borderRadius: '1rem', marginBottom: '2rem' }}></div>
+                    <div className="skeleton-title" style={{ width: '100%', maxWidth: '500px', height: '2rem', marginBottom: '1rem' }}></div>
+                    <div className="skeleton-text" style={{ width: '100%', maxWidth: '300px', height: '1rem' }}></div>
+                </div>
+                <Footer />
+            </div>
+        );
+    }
+
     if (!house) {
         return (
             <div className="app">
                 <Navbar />
                 <div className="container section" style={{ textAlign: 'center', minHeight: '60vh' }}>
-                    <h2>Listing not found</h2>
-                    <Link to="/" className="btn btn-primary" style={{ marginTop: '1rem' }}>Back to Home</Link>
+                    <h2 style={{ fontSize: '2rem', color: 'var(--text-dark)', marginBottom: '1rem' }}>Listing not found</h2>
+                    <p style={{ color: 'var(--text-light)', marginBottom: '2rem' }}>The property you are looking for might have been removed or is no longer available.</p>
+                    <Link to="/" className="btn btn-primary">Back to Home</Link>
                 </div>
                 <Footer />
             </div>
@@ -89,11 +103,6 @@ const ListingDetails = () => {
                                     loading="lazy"
                                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 />
-                                {house.verified && (
-                                    <span style={{ position: 'absolute', top: '20px', left: '20px', backgroundColor: 'var(--primary)', color: 'white', padding: '0.5rem 1rem', borderRadius: '9999px', fontSize: '0.85rem', fontWeight: 'bold' }}>
-                                        VERIFIED
-                                    </span>
-                                )}
                             </div>
 
                             {/* Angle Shots Grid */}
@@ -174,9 +183,9 @@ const ListingDetails = () => {
                                     </div>
                                 </div>
 
-                                {/* Landmarks */}
+                                {/* House Code */}
                                 <div>
-                                    <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>Nearby Landmarks</h3>
+                                    <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>House Code</h3>
                                     <p style={{ display: 'flex', alignItems: 'center', color: '#4b5563', backgroundColor: '#ecfdf5', padding: '1rem', borderRadius: '0.5rem', border: '1px solid #d1fae5' }}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.75rem', color: 'var(--primary)' }}>
                                             <path d="M3 3v18h18" /><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
@@ -191,8 +200,6 @@ const ListingDetails = () => {
                         {/* Sticky Sidebar / CTA */}
                         {/* Note: In a real responsive layout this might move. For now we put it below on mobile or stick it. */}
                         <div style={{ marginTop: '2rem' }}>
-                            {/* Top Sidebar Ad */}
-                            <AdBanner slotId="SIDEBAR_AD" style={{ margin: '0 0 1rem 0' }} />
 
                             <div style={{
                                 backgroundColor: 'white',
@@ -248,14 +255,9 @@ const ListingDetails = () => {
                                     </div>
                                 </div>
                             </div>
-
-                            {/* Bottom Sidebar Ad */}
-                            <AdBanner slotId="SIDEBAR_BOTTOM_AD" style={{ margin: '1rem 0 0 0' }} />
                         </div>
 
                     </div>
-
-                    <AdBanner slotId="DETAILS_BOTTOM_BANNER" />
                 </div>
             </div>
 

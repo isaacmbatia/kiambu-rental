@@ -6,7 +6,6 @@ import ListingCard from './components/ListingCard';
 import Footer from './components/Footer';
 import TenantHero from './components/TenantHero';
 import SearchFilters from './components/SearchFilters';
-import AdBanner from './components/AdBanner';
 import { apiCache } from './utils/apiCache';
 
 
@@ -99,10 +98,6 @@ function Home() {
             <TenantHero />
             <SearchFilters filters={filters} setFilters={setFilters} />
 
-            <div className="container">
-                <AdBanner slotId="HOME_TOP_BANNER" />
-            </div>
-
             <div className="section container" id="listings">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
                     <h2 className="section-title" style={{ margin: 0, textAlign: 'left' }}>Latest Verified Houses</h2>
@@ -174,10 +169,6 @@ function Home() {
                         </button>
                     </div>
                 )}
-            </div>
-
-            <div className="container">
-                <AdBanner slotId="HOME_BOTTOM_BANNER" />
             </div>
 
             <Features />

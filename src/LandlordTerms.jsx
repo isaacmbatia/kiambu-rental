@@ -74,7 +74,7 @@ const LandlordTerms = () => {
                                     boxShadow: '0 2px 4px rgba(249, 115, 22, 0.2)'
                                 }}
                             >
-                                Talk to admin WhatsApp. I know the rules
+                                Chat admin on WhatsApp (I know the rules)
                             </a>
                         </div>
                         <p style={{ fontSize: '1.1rem', marginBottom: '2.5rem', color: 'var(--text-light)', textAlign: 'center' }}>

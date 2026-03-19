@@ -15,7 +15,7 @@ const Dashboard = () => {
         type: '',
         description: '',
         amenities: '',
-        landmarks: ''
+        houseCode: ''
     });
     const [images, setImages] = useState([]);
     const [submitting, setSubmitting] = useState(false);
@@ -155,7 +155,7 @@ const Dashboard = () => {
             if (res.ok) {
                 alert('House posted successfully!');
                 setFormData({
-                    title: '', location: '', price: '', type: '', description: '', amenities: '', landmarks: ''
+                    title: '', location: '', price: '', type: '', description: '', amenities: '', houseCode: ''
                 });
                 setImages([]);
                 // Clear the file input manually if needed
@@ -258,7 +258,7 @@ const Dashboard = () => {
                             </div>
                             <textarea name="description" placeholder="Description" value={formData.description} onChange={handleChange} required style={{ ...inputStyle, minHeight: '100px' }} />
                             <input name="amenities" placeholder="Amenities (comma separated: WiFi, CCTV)" value={formData.amenities} onChange={handleChange} style={inputStyle} />
-                            <input name="landmarks" placeholder="House Code (e.g. KMB-001)" value={formData.landmarks} onChange={handleChange} style={inputStyle} />
+                            <input name="houseCode" placeholder="House Code (e.g. KMB-001)" value={formData.houseCode} onChange={handleChange} style={inputStyle} />
 
                             <div>
                                 <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Upload Photos (Max 10)</label>

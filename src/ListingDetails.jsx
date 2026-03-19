@@ -190,7 +190,7 @@ const ListingDetails = () => {
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.75rem', color: 'var(--primary)' }}>
                                             <path d="M3 3v18h18" /><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
                                         </svg>
-                                        {house.landmarks || "Not specified"}
+                                        {house.houseCode || "Not specified"}
                                     </p>
                                 </div>
 
@@ -234,24 +234,64 @@ const ListingDetails = () => {
                                     Call Now
                                 </a>
 
+                                {/* Viewing Fee Card */}
                                 <div style={{
                                     backgroundColor: '#fff7ed',
-                                    border: '1px solid #ffedd5',
-                                    color: '#c2410c',
-                                    padding: '1rem',
-                                    borderRadius: '0.5rem',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'start',
-                                    lineHeight: '1.5'
+                                    border: '1px solid #fed7aa',
+                                    borderRadius: '0.75rem',
+                                    overflow: 'hidden',
+                                    fontSize: '0.875rem',
+                                    lineHeight: '1.6'
                                 }}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.75rem', flexShrink: 0, marginTop: '2px' }}>
-                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                                        <line x1="12" y1="9" x2="12" y2="13"></line>
-                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                                    </svg>
-                                    <div>
-                                        <strong>Note:</strong> Viewing fee may apply. All houses are verified before posting.
+                                    {/* Card Header */}
+                                    <div style={{
+                                        backgroundColor: '#ea580c',
+                                        color: 'white',
+                                        padding: '0.6rem 1rem',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.5rem',
+                                        fontWeight: 700,
+                                        fontSize: '0.85rem'
+                                    }}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                        </svg>
+                                        Note: Viewing fees apply. Verified houses only.
+                                    </div>
+
+                                    {/* Agent Viewing */}
+                                    <div style={{ padding: '0.75rem 1rem', borderBottom: '1px solid #fed7aa' }}>
+                                        <div style={{ fontWeight: 700, color: '#9a3412', marginBottom: '0.3rem' }}>
+                                            🏠 Agent Viewing <span style={{ fontWeight: 400, color: '#c2410c' }}>(+1 house FREE)</span>
+                                        </div>
+                                        <div style={{ color: '#7c2d12', paddingLeft: '0.25rem' }}>
+                                            <div>Singles — <strong>KSh 400</strong></div>
+                                            <div>Bedsitters — <strong>KSh 500</strong></div>
+                                            <div>1–3 BR — <strong>from KSh 1,000</strong></div>
+                                        </div>
+                                        <div style={{
+                                            marginTop: '0.5rem',
+                                            backgroundColor: '#16a34a',
+                                            color: 'white',
+                                            padding: '0.35rem 0.75rem',
+                                            borderRadius: '0.4rem',
+                                            fontWeight: 700,
+                                            display: 'inline-block',
+                                            fontSize: '0.82rem'
+                                        }}>
+                                            Unlimited Package — KSh 1,500
+                                        </div>
+                                    </div>
+
+                                    {/* Self View */}
+                                    <div style={{ padding: '0.75rem 1rem', color: '#92400e' }}>
+                                        <span style={{ fontWeight: 700 }}>👤 Self-view — KSh 150</span>
+                                        <span style={{ fontStyle: 'italic', marginLeft: '0.4rem', fontSize: '0.8rem' }}>
+                                            (landlord contacts given, not recommended)
+                                        </span>
                                     </div>
                                 </div>
                             </div>

@@ -88,7 +88,7 @@ app.get('/api/houses', async (req, res) => {
 // Add New House (Protected)
 app.post('/api/houses', authenticateToken, upload.array('images', 10), async (req, res) => {
     try {
-        const { title, location, price, type, description, amenities, landmarks } = req.body;
+        const { title, location, price, type, description, amenities, houseCode } = req.body;
 
         // Cloudinary URLs are available in req.files[].path
         const imagePaths = req.files.map(file => file.path);
@@ -102,7 +102,7 @@ app.post('/api/houses', authenticateToken, upload.array('images', 10), async (re
             type,
             description,
             amenities: amenitiesArray,
-            landmarks,
+            houseCode,
             imageUrl: mainImage,
             images: imagePaths,
             isNew: true,

@@ -36,7 +36,7 @@ const houseSchema = new mongoose.Schema({
   type: { type: String, required: true },
   description: String,
   amenities: [String],
-  landmarks: String,
+  houseCode: String,
   imageUrl: String,
   images: [String],
   isNew: { type: Boolean, default: true },

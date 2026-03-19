@@ -58,21 +58,24 @@ const LandlordTerms = () => {
                         color: 'var(--text-dark)',
                         position: 'relative'
                     }}>
-                        {/* Quick Admin Access Button */}
+                        {/* Quick WhatsApp Admin Access Button */}
                         <div style={{ textAlign: 'right', marginBottom: '2rem' }}>
-                            <Link 
-                                to="/admin" 
+                            <a 
+                                href="https://wa.me/254735047202?text=I%20want%20to%20list%20my%20property.%20I%20already%20know%20the%20rules."
+                                target="_blank"
+                                rel="noreferrer"
                                 className="btn" 
                                 style={{ 
-                                    backgroundColor: '#f3f4f6', 
-                                    color: '#4b5563', 
+                                    backgroundColor: '#f97316', // Orange
+                                    color: 'white', 
                                     fontSize: '0.85rem',
-                                    border: '1px solid #d1d5db',
-                                    padding: '0.5rem 1rem'
+                                    fontWeight: '700',
+                                    padding: '0.6rem 1.2rem',
+                                    boxShadow: '0 2px 4px rgba(249, 115, 22, 0.2)'
                                 }}
                             >
-                                Take me to admin. I know the rules
-                            </Link>
+                                Talk to admin WhatsApp. I know the rules
+                            </a>
                         </div>
                         <p style={{ fontSize: '1.1rem', marginBottom: '2.5rem', color: 'var(--text-light)', textAlign: 'center' }}>
                             Kiambu Rental provides landlords with a simple and affordable platform to market rental properties and secure tenants efficiently.
